@@ -1,0 +1,71 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int main () {
+    // 1. Deklarasi variabel sesuai deskripsi soal
+    double panjang = 0;
+    double lebar = 0;
+    double tinggi = 0;
+    double luas_dinding = 0;
+    double liter_cat = 0;
+    double total_biaya = 0;
+    int harga_cat_liter = 0;
+
+    cout << "====== STUDI KASUS 8 - MENGHITUNG BIAYA CAT DINDING ======" << endl;
+
+    // 2. Menerima input data dimensi ruangan dan harga cat
+    cout << "Masukkan Panjang Ruangan (meter) : ";
+    cin >> panjang;
+    cout << "Masukkan Lebar Ruangan (meter)   : ";
+    cin >> lebar;
+    cout << "Masukkan Tinggi Ruangan (meter)  : ";
+    cin >> tinggi;
+    cout << "Masukkan Harga Cat Per Liter (Rp): ";
+    cin >> harga_cat_liter;
+    cout << endl;
+
+    // 3. Rumus Perhitungan
+    // Menghitung luas total 4 sisi dinding (2 sisi panjang + 2 sisi lebar)
+    luas_dinding = 2 * (panjang * tinggi) + 2 * (lebar * tinggi);
+    
+    // Asumsi soal: 1 liter cat dapat mengecat 10 m²
+    liter_cat = luas_dinding / 10;
+    
+    // Menghitung total biaya pembelian cat
+    total_biaya = liter_cat * harga_cat_liter;
+
+    // 4. Menampilkan hasil dengan format tabel desimal dua digit
+    cout << "====== HASIL PERHITUNGAN ======" << endl;
+    cout << left << setw (15) << "LUAS_DINDING" << setw (15) << "LITER_CAT (L)" << setw (15) << "HARGA_PER_LITER" << setw (15) << "TOTAL_BIAYA" << endl;
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+    cout << left << setw (15) << fixed << setprecision (3) << luas_dinding << setw (15) << fixed << setprecision (3) << liter_cat  << "Rp" << setw (15) << harga_cat_liter << "Rp" << fixed << setprecision (3) << total_biaya << endl;
+
+    // 5. MODIFIKASI: Kategori jumlah cat yang dibutuhkan
+    cout << "Kategori Jumlah Cat : ";
+    if (liter_cat > 10) {
+        cout << "Banyak Cat Dibutuhkan" << endl;
+    } else if (liter_cat >= 5 && liter_cat <= 10) { // & ganda digunakan untuk menghubungkan dua kondisi logika (pernyataan Benar/Salah)
+        cout << "Sedang" << endl;
+    } else {
+        cout << "Sedikit" << endl;
+    }
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+
+    return 0;
+}
+/* ====== STUDI KASUS 8 - MENGHITUNG BIAYA CAT DINDING ======
+Masukkan Panjang Ruangan (meter) : 45
+Masukkan Lebar Ruangan (meter)   : 45
+Masukkan Tinggi Ruangan (meter)  : 45
+Masukkan Harga Cat Per Liter (Rp): 90000
+
+====== HASIL PERHITUNGAN ======
+LUAS_DINDING   LITER_CAT (L)  HARGA_PER_LITERTOTAL_BIAYA    
+--------------------------------------------------------------------------------------------
+8100.000       810.000        Rp90000          Rp72900000.000
+Kategori Jumlah Cat : Banyak Cat Dibutuhkan
+-------------------------------------------------------------------------------------------- */
